@@ -30,7 +30,7 @@ public abstract class BaseState
         return null;
     }
 
-    protected void FindRandomDestination()
+    protected virtual void FindRandomDestination()
     {
         Vector3 testPosition = new Vector3(UnityEngine.Random.Range(-20.5f, 20.5f), 0.0f, UnityEngine.Random.Range(-20.5f, 20.5f));
         destination = new Vector3(testPosition.x, drone.transform.position.y, testPosition.z);

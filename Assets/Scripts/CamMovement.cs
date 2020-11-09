@@ -6,16 +6,21 @@ public class CamMovement : MonoBehaviour
 {
     Camera cam;
     Vector2 vec;
-    [SerializeField] GameObject[] presets;
+    GameObject[] presets;
     int actuPreset = -1;
+    [SerializeField] Transform presetParent;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         vec = Vector2.zero;
-        for(int i = 0; i<6; i++)
+        presets = new GameObject[presetParent.childCount];
+
+
+        for(int i = 0; i<presetParent.childCount; i++)
         {
+            presets[i] = presetParent.GetChild(i).gameObject;
             presets[i].SetActive(false);
         }
     }
@@ -92,6 +97,12 @@ public class CamMovement : MonoBehaviour
         presets[actuPreset].SetActive(false);
 
         actuPreset++;
+        
+
+        if(actuPreset >= presets.Length)
+        {
+            actuPreset = 0;
+        }
         presets[actuPreset].SetActive(true);
     }
 }

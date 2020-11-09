@@ -15,6 +15,10 @@ public class DummyState : BaseState
         drone.textState.text = "Dummy";
 
         Transform chaseTarget = CheckForSightTrigger();
+        if(chaseTarget)
+        {
+            return typeof(FleeState);
+        }
         chaseTarget = null;
 
         return null;

@@ -20,8 +20,7 @@ public class ChaseState : BaseState
         {
             if (IsAtRangeAttack() && (drone.aiType != DroneAI.Shooter && drone.aiType != DroneAI.Sniper))
             {
-                //Debug.Log("Chase => Attack");
-                drone.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                drone.agent.ResetPath();
                 if (drone.aiType == DroneAI.Berserk)
                 {
                     if (drone.GetHp() <= 5)
@@ -34,7 +33,7 @@ public class ChaseState : BaseState
             }
             else if (IsAtRangeAttackDist() && (drone.aiType == DroneAI.Assault || drone.aiType == DroneAI.Shooter || drone.aiType == DroneAI.Sniper))
             {
-                drone.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                drone.agent.ResetPath();
                 return typeof(AttackDistState);
             }
             else if (IsAtRangeChase())

@@ -29,7 +29,10 @@ public class Dummy : Drone
         var states = new Dictionary<Type, BaseState>()
         {
             { typeof(DummyState), new DummyState(this) },
-            { typeof(InvestigateState), new InvestigateState(this) }
+            { typeof(InvestigateState), new InvestigateState(this) },
+            //{ typeof(FleeState), new FleeState(this) },
+            //{ typeof(WanderState), new WanderState(this) },
+
         };
 
         GetComponent<StateMachine>().SetStates(states);

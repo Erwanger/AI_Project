@@ -13,7 +13,11 @@ public abstract class  Drone : MonoBehaviour
     GameObject fieldOfView;
     protected List<Transform> objectsInSight;
 
-    protected int hp = 10;
+    [SerializeField]protected int hp = 10;
+
+    Transform safeZoneParent;
+    [HideInInspector]
+    public Transform[] safeZones;
 
     public int _ID;
     public int tickInIdle;
@@ -45,6 +49,18 @@ public abstract class  Drone : MonoBehaviour
 
         walkSpeed = agent.speed;
         fleeSpeed = walkSpeed + 2.0f;
+    }
+
+    private void Start()
+    {
+        safeZoneParent = GameObject.Find("SafeZones").transform;
+
+        safeZones = new Transform[safeZoneParent.childCount];
+
+        for(int i=0; i<safeZoneParent.childCount; i++)
+        {
+            safeZones[i] = safeZoneParent.GetChild(i);
+        }
     }
 
     private void Update()
