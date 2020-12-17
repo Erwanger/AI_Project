@@ -56,7 +56,7 @@ public class AttackDistState : BaseState
 
     private bool IsAtRange()
     {
-        if (drone._attackRange > (drone.transform.position - drone.target.position).magnitude)
+        if (drone.AttackRange > (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }
@@ -66,13 +66,13 @@ public class AttackDistState : BaseState
 
     private void Attack()
     {
-        Debug.Log("Drone n°" + drone._ID + " hit!");
+        Debug.Log("Drone n°" + drone.GetId() + " hit!");
         drone.target.GetComponent<Drone>().LoseHp();
     }
 
     private bool IsAtRangeDist()
     {
-        if (drone._attackRangeDist > (drone.transform.position - drone.target.position).magnitude)
+        if (drone.AttackRangeDist > (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }

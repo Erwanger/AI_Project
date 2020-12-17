@@ -58,7 +58,7 @@ public class ChaseState : BaseState
 
     private bool IsAtRangeAttack()
     {
-        if (drone._attackRange > (drone.transform.position - drone.target.position).magnitude)
+        if (drone.AttackRange > (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }
@@ -68,7 +68,7 @@ public class ChaseState : BaseState
 
     private bool IsAtRangeAttackDist()
     {
-        if (drone._attackRangeDist > (drone.transform.position - drone.target.position).magnitude)
+        if (drone.AttackRangeDist > (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }
@@ -78,7 +78,7 @@ public class ChaseState : BaseState
 
     private bool IsAtRangeChase()
     {
-        if (drone._chaseRadius >= (drone.transform.position - drone.target.position).magnitude)
+        if (drone.ChaseRadius >= (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }

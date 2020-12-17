@@ -8,3 +8,5 @@ Assembly-CSharp.csproj
 AI_Project.sln
 
 obj/
+
+build/

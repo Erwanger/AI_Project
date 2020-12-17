@@ -5,23 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
 
-public class Dummy : Drone
+public class Dummy : Drone //This drone will not move without an order. It's a way to test sight and hearing on a staying drone, or just testing a new state.
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Drone n°" + _ID + " : " +  objectsInSight.Count);
-        foreach(Transform t in objectsInSight)
+        //In case of problem using the sight, use this part to know if the drone is seeing the right way
+        /*foreach(Transform t in objectsInSight)
         {
-            //Debug.DrawRay(transform.position, t.position, Color.red);
+            Debug.DrawRay(transform.position, t.position, Color.red);
             Debug.Log(gameObject.name + " voit : " + t.name + " à la pos " + t.position);
-        }
+        }*/
     }
 
     protected override void InitializeStateMachine()
@@ -29,9 +23,7 @@ public class Dummy : Drone
         var states = new Dictionary<Type, BaseState>()
         {
             { typeof(DummyState), new DummyState(this) },
-            { typeof(InvestigateState), new InvestigateState(this) },
-            //{ typeof(FleeState), new FleeState(this) },
-            //{ typeof(WanderState), new WanderState(this) },
+            { typeof(InvestigateState), new InvestigateState(this) }
 
         };
 
@@ -43,6 +35,7 @@ public class Dummy : Drone
         aiType = DroneAI.Dummy;
     }
 
+    //If something enter our sight trigger, we add it to the list of "objects in sight"
     protected override void TriggEnter(Collider other)
     {
         if(other.tag != "Sight")
@@ -56,6 +49,7 @@ public class Dummy : Drone
         }
     }
 
+    //If something get out of our sight trigger, we remove it of the list of "objects in sight"
     protected override void TriggExit(Collider other)
     {
         if (other.tag != "Sight")

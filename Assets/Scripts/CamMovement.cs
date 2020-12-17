@@ -10,18 +10,28 @@ public class CamMovement : MonoBehaviour
     int actuPreset = -1;
     [SerializeField] Transform presetParent;
 
+    GameObject[] textsPreset;
+    [SerializeField] Transform textParent;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         vec = Vector2.zero;
         presets = new GameObject[presetParent.childCount];
+        textsPreset = new GameObject[textParent.childCount];
 
 
-        for(int i = 0; i<presetParent.childCount; i++)
+        for (int i = 0; i < presetParent.childCount; i++)
         {
             presets[i] = presetParent.GetChild(i).gameObject;
             presets[i].SetActive(false);
+        }
+
+        for (int i = 0; i < presetParent.childCount; i++)
+        {
+            textsPreset[i] = textParent.GetChild(i).gameObject;
+            textsPreset[i].SetActive(false);
         }
     }
 
@@ -36,7 +46,7 @@ public class CamMovement : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                StartCoroutine("MakeSound",hit.point);
+                StartCoroutine("MakeSound", hit.point);
             }
         }
 
@@ -50,9 +60,14 @@ public class CamMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             CyclePresets();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
@@ -93,16 +108,21 @@ public class CamMovement : MonoBehaviour
 
     private void CyclePresets()
     {
-        if(actuPreset != -1)
-        presets[actuPreset].SetActive(false);
+        if (actuPreset != -1)
+        {
+            presets[actuPreset].SetActive(false);
+            textsPreset[actuPreset].SetActive(false);
+
+        }
 
         actuPreset++;
-        
 
-        if(actuPreset >= presets.Length)
+        if (actuPreset >= presets.Length)
         {
             actuPreset = 0;
         }
+
         presets[actuPreset].SetActive(true);
+        textsPreset[actuPreset].SetActive(true);
     }
 }

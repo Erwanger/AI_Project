@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
 
-public class Attacker : Drone
+public class Attacker : Drone //This drone will do melee attacks
 {
     protected override void InitializeStateMachine()
     {

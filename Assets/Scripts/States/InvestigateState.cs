@@ -37,6 +37,8 @@ public class InvestigateState : BaseState
             }
         }
 
+
+
         if (drone.agent.remainingDistance <= 0.5f)
         {
             timer += Time.deltaTime;
@@ -44,6 +46,10 @@ public class InvestigateState : BaseState
             if(timer >= timeToWait)
             {
                 timer = 0.0f;
+                if(drone.aiType == DroneAI.Dummy)
+                {
+                    return typeof(DummyState);
+                }
                 return typeof(WanderState);
             }
         }

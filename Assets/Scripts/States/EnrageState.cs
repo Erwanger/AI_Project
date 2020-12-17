@@ -45,7 +45,7 @@ public class EnrageState : BaseState
 
     private bool IsAtRange()
     {
-        if (drone._attackRange > (drone.transform.position - drone.target.position).magnitude)
+        if (drone.AttackRange > (drone.transform.position - drone.target.position).magnitude)
         {
             return true;
         }
@@ -55,7 +55,7 @@ public class EnrageState : BaseState
 
     private void Attack()
     {
-        Debug.Log("Drone n°" + drone._ID + " hit!");
+        Debug.Log("Drone n°" + drone.GetId() + " hit!");
         drone.target.GetComponent<Drone>().LoseHp();
     }
 }

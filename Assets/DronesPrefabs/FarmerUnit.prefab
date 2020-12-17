@@ -99,7 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   aiType: 9
-  _ID: 0
+  hp: 10
+  safeZones: []
   tickInIdle: 0
   tickInWander: 0
   textState: {fileID: 5694587245649551180}
@@ -107,7 +108,7 @@ MonoBehaviour:
   walkSpeed: 0
   fleeSpeed: 0
   _chaseRadius: 0
-  _attackRange: 1
+  _attackRange: 0
   _attackRangeDist: 0
   target: {fileID: 0}
 --- !u!1001 &8035698978563104566
@@ -177,12 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4682487393627684569, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
+    - target: {fileID: 9063626891993480017, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 9063626891993480017, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
+    - target: {fileID: 4682487393627684569, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
         type: 3}
       propertyPath: m_Mesh
       value: 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.AI;
 
-public class Assault : Drone
+public class Assault : Drone  //This drone will act like a range one, but will do melee attacks when to close
 {
 
     protected override void InitializeStateMachine()

@@ -16,7 +16,7 @@ public class WanderState : BaseState
 
         Transform chaseTarget = CheckForSightTrigger();
 
-        if(drone.aiType == DroneAI.Attacker || drone.aiType == DroneAI.Coward || drone.aiType == DroneAI.Berserk || drone.aiType == DroneAI.Dummy)
+        if(drone.aiType == DroneAI.Attacker || drone.aiType == DroneAI.Coward || drone.aiType == DroneAI.Berserk)
         {
             if (chaseTarget != null)
             {
@@ -37,10 +37,10 @@ public class WanderState : BaseState
 
         if (!drone.agent.pathPending && drone.agent.remainingDistance < 0.5f)
         {
-            //soit on trouve une nouvelle destination
+            //We find a new destination
             FindRandomDestination();
 
-            //soit on bascule en Idle
+            //or we can go on Idle
             if (nbTick >= drone.tickInWander)
             {
                 nbTick = 0;

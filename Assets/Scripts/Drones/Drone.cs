@@ -19,7 +19,8 @@ public abstract class  Drone : MonoBehaviour
     [HideInInspector]
     public Transform[] safeZones;
 
-    public int _ID;
+    [SerializeField]
+    int _ID = 0;
     public int tickInIdle;
     public int tickInWander;
     public TextMesh textState;
@@ -31,14 +32,21 @@ public abstract class  Drone : MonoBehaviour
     [HideInInspector]
     public float fleeSpeed;
 
-    public float _chaseRadius; //Si la cible dépasse cette distance, on arrête de chase
-    public float _attackRange;
-    public float _attackRangeDist;
+    [SerializeField]
+    float _chaseRadius = 10.0f; //If the target is further than this radius, we stop the chase
+    [SerializeField]
+    float _attackRange = 2.0f;
+    [SerializeField]
+    float _attackRangeDist = 10.0f;
 
     [HideInInspector]
     public Transform target;
 
     public StateMachine StateMachine => GetComponent<StateMachine>();
+
+    public float ChaseRadius => _chaseRadius;
+    public float AttackRange => _attackRange;
+    public float AttackRangeDist  => _attackRangeDist;
 
     private void Awake()
     {
@@ -53,6 +61,7 @@ public abstract class  Drone : MonoBehaviour
 
     private void Start()
     {
+        //The drone will save the SafeZones
         safeZoneParent = GameObject.Find("SafeZones").transform;
 
         safeZones = new Transform[safeZoneParent.childCount];
@@ -63,6 +72,7 @@ public abstract class  Drone : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     private void Update()
     {
         if(hp <= 0)
@@ -76,6 +86,7 @@ public abstract class  Drone : MonoBehaviour
 
     protected abstract void InitDroneType();
 
+    //If something enter our sight trigger, we add it to the list of "objects in sight"
     protected virtual void TriggEnter(Collider other)
     {
         if (other.tag != "Sight")
@@ -88,6 +99,7 @@ public abstract class  Drone : MonoBehaviour
         }
     }
 
+    //If something get out of our sight trigger, we remove it of the list of "objects in sight"
     protected virtual void TriggExit(Collider other)
     {
         if (other.tag != "Sight")
@@ -100,6 +112,8 @@ public abstract class  Drone : MonoBehaviour
         }
     }
 
+
+    //If a drone enter a trigger (the sight one), we call the method needed. If it's a sound, we're going into "InvestigateState"
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.parent)
@@ -146,6 +160,11 @@ public abstract class  Drone : MonoBehaviour
     public int GetHp()
     {
         return hp;
+    }
+
+    public int GetId()
+    {
+        return _ID;
     }
 }
 

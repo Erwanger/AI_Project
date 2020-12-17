@@ -99,7 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   aiType: 2
-  _ID: 0
+  hp: 10
+  safeZones: []
   tickInIdle: 0
   tickInWander: 0
   textState: {fileID: 3272441871858074790}
@@ -177,12 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4682487393627684569, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
+    - target: {fileID: 9063626891993480017, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 9063626891993480017, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
+    - target: {fileID: 4682487393627684569, guid: 8a8cee76ac8bf8e41bcfd8b5f6a2a252,
         type: 3}
       propertyPath: m_Mesh
       value: 
