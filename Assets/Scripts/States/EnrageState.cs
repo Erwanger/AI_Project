@@ -15,7 +15,7 @@ public class EnrageState : BaseState
 
     public override Type Tick()
     {
-        drone.textState.text = "ENRAGE";
+        drone.textState.text = "Enrage";
         timer -= Time.deltaTime;
 
         if (drone.target != null)

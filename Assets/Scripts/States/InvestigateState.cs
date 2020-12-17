@@ -39,8 +39,9 @@ public class InvestigateState : BaseState
 
 
 
-        if (drone.agent.remainingDistance <= 0.5f)
+        if (drone.agent.remainingDistance <= 2.0f)
         {
+            drone.agent.ResetPath();
             timer += Time.deltaTime;
 
             if(timer >= timeToWait)

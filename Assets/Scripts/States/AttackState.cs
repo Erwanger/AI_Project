@@ -28,6 +28,14 @@ public class AttackState : BaseState
                 }
             }
 
+            if (drone.aiType == DroneAI.Berserk)
+            {
+                if (drone.GetHp() <= 5)
+                {
+                    return typeof(EnrageState);
+                }
+            }
+
             if (IsAtRange())
             {
                 drone.transform.forward = drone.target.position - drone.transform.position;

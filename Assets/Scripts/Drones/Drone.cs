@@ -10,6 +10,8 @@ public abstract class  Drone : MonoBehaviour
     public Team team;
     public DroneAI aiType;
 
+    
+
     GameObject fieldOfView;
     protected List<Transform> objectsInSight;
 
@@ -155,6 +157,7 @@ public abstract class  Drone : MonoBehaviour
     public void LoseHp()
     {
         hp--;
+        StartCoroutine("GetHit");
     }
 
     public int GetHp()
@@ -166,7 +169,18 @@ public abstract class  Drone : MonoBehaviour
     {
         return _ID;
     }
+
+    IEnumerator GetHit()
+    {
+        transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+
+        yield return new WaitForSeconds(0.1f);
+
+        transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+    }
 }
+
+
 
 public enum Team
 {
