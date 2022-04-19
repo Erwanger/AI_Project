@@ -11,22 +11,6 @@ public class UI_Controller : MonoBehaviour
     [SerializeField]
     GameObject[] panels;
 
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Close the panel in param
     public void ClosePanel(int _i)
     {
